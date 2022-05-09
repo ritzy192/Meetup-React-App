@@ -1,10 +1,10 @@
+import Todo from "./components/Todo";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        Hello 
-      </header>
+      <Todo title="Todo 1"></Todo>
+      <Todo title="Todo 2"></Todo>
     </div>
   );
 }
