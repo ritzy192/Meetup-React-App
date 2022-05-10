@@ -3,9 +3,12 @@ import Modal from "./Modal"
 import {useState} from "react"
 
 function Todo(props) {
-    const clickHandler = () =>{
+    const deleteHandler = () =>{
         console.log(props.title + ' Got Clicked')
         setModalState(true)
+    }
+    const closeModalHandler = () =>{
+      setModalState(false)
     }
     const [isModalOpen, setModalState] = useState(false)
   return (
@@ -14,11 +17,11 @@ function Todo(props) {
       <div className='card'>
         <h2>{props.title}</h2>
         <div className='actions'>
-          <button className='btn' onClick={clickHandler}>Delete</button>
+          <button className='btn' onClick={deleteHandler}>Delete</button>
         </div>
       </div>
-      {isModalOpen && <Modal/>}
-      {isModalOpen && <Backdrop/>}
+      {isModalOpen && <Modal onCancel={closeModalHandler} onConfirm={closeModalHandler}/>}
+      {isModalOpen && <Backdrop onBackdropClick={closeModalHandler}/>}
     </div>
   )
 }
